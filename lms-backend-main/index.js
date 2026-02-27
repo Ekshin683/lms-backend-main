@@ -10,8 +10,9 @@ app.use(cors());
 dotenv.config();
 const startServer = async () => {
   await dbConnect();
-  app.listen(8080, () => console.log("Server Started"));
 };
 startServer()
 
 app.use("/api/users", userRouter);
+
+export default app;
