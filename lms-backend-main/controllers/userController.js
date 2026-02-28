@@ -5,8 +5,6 @@ const SECRET = "lpu123";
 const signup = async (req, res) => {
   try {
     const body = req.body;
-    
-    // Validate required fields
     if (!body.name || !body.email || !body.password) {
       return res.status(400).json({ message: "Name, email, and password are required" });
     }
@@ -17,8 +15,6 @@ const signup = async (req, res) => {
     res.status(201).json({ message: "User Created", data: result });
   } catch (err) {
     console.log("Signup Error:", err);
-    
-    // Handle duplicate email error
     if (err.code === 11000) {
       return res.status(400).json({ message: "Email already exists" });
     }
